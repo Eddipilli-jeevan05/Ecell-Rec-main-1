@@ -14,6 +14,7 @@ import { Eye, EyeOff, Rocket, Loader2 } from "lucide-react";
 import { ECellLogo } from "@/components/ECellLogo";
 import { InfoTooltip } from "@/components/ui/info-tooltip";
 import { PasswordStrength } from "@/components/ui/password-strength";
+import { SimpleThemeToggle } from "@/components/ui/theme-toggle";
 import { DatabaseService } from "@/lib/supabase";
 import { MockDataService } from "@/lib/mockData";
 
@@ -137,11 +138,16 @@ export default function RegisterPage() {
   const graduationYears = ["2025", "2026", "2027", "2028", "2029", "2030"];
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-background relative overflow-hidden transition-colors duration-300">
+      {/* Theme Toggle - Fixed position */}
+      <div className="fixed top-6 right-6 z-50">
+        <SimpleThemeToggle />
+      </div>
+
       {/* Background elements */}
       <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-primary opacity-20 blur-xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-gradient-accent opacity-15 blur-xl animate-pulse delay-1000" />
-      
+
       <div className="container mx-auto px-6 py-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-8">

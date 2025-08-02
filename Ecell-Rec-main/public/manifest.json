@@ -1,0 +1,16 @@
+{
+  "name": "E-Cell Startup Portal",
+  "short_name": "E-Cell Portal",
+  "description": "Startup Submission Portal for E-Cell, Raghu Engineering College",
+  "start_url": "/registration",
+  "display": "standalone",
+  "background_color": "#240a3a",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { LogOut, FileText, HelpCircle, Plus, Trash2, Shield, Phone, Mail, ExternalLink, CheckCircle, Clock, Users, Target, Lightbulb, Save, Lock, ChevronDown, ChevronUp, UserPlus, AlertTriangle } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { FileUpload } from "@/components/ui/file-upload";
+import { SimpleThemeToggle } from "@/components/ui/theme-toggle";
 
 import { ECellLogo } from "@/components/ECellLogo";
 
@@ -291,7 +292,12 @@ export default function DashboardPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background transition-colors duration-300">
+        {/* Theme Toggle - Fixed position */}
+        <div className="fixed top-6 right-6 z-50">
+          <SimpleThemeToggle />
+        </div>
+
         <div className="container mx-auto px-6 py-8">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
@@ -430,7 +436,12 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background transition-colors duration-300">
+      {/* Theme Toggle - Fixed position */}
+      <div className="fixed top-6 right-6 z-50">
+        <SimpleThemeToggle />
+      </div>
+
       <div className="container mx-auto px-6 py-8">
         {/* Navigation Bar */}
         <div className="sticky top-0 z-50 flex justify-between items-center mb-8 p-4 bg-background/80 backdrop-blur-sm border-b shadow-sm rounded-lg">

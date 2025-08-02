@@ -1,11 +1,11 @@
 'use client'
 
-
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Lightbulb, Target } from "lucide-react";
 import { ECellLogo } from "@/components/ECellLogo";
+import { SimpleThemeToggle } from "@/components/ui/theme-toggle";
 
 
 export default function HomePage() {
@@ -20,7 +20,12 @@ export default function HomePage() {
   }, [router]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background transition-colors duration-300">
+      {/* Theme Toggle - Fixed position */}
+      <div className="fixed top-6 right-6 z-50">
+        <SimpleThemeToggle />
+      </div>
+
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background with clean gradient */}
         <div className="absolute inset-0 bg-gradient-secondary">
@@ -33,7 +38,7 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-card/50 backdrop-blur-sm mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-card/50 backdrop-blur-sm mb-6 transition-colors duration-300">
             <ECellLogo size="sm" className="text-primary" />
             <span className="text-xs font-medium">Raghu Engineering College E-Cell</span>
           </div>
@@ -64,7 +69,7 @@ export default function HomePage() {
             <Button
               variant="outline"
               size="default"
-              className="px-6 py-2 border-primary/30 hover:bg-primary/10"
+              className="px-6 py-2 border-primary/30 hover:bg-primary/10 transition-all duration-300"
               onClick={() => router.push("registration/login")}
             >
               <Users className="mr-2 w-4 h-4" />
@@ -74,22 +79,22 @@ export default function HomePage() {
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-primary/20 mb-3">
+            <div className="text-center group">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-primary/20 mb-3 group-hover:bg-gradient-primary/30 transition-all duration-300">
                 <Lightbulb className="w-6 h-6 text-primary" />
               </div>
               <div className="text-2xl font-bold text-primary mb-1">100+</div>
               <div className="text-sm text-muted-foreground">Ideas Submitted</div>
             </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-primary/20 mb-3">
+            <div className="text-center group">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-primary/20 mb-3 group-hover:bg-gradient-primary/30 transition-all duration-300">
                 <Users className="w-6 h-6 text-primary" />
               </div>
               <div className="text-2xl font-bold text-primary mb-1">50+</div>
               <div className="text-sm text-muted-foreground">Active Mentors</div>
             </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-primary/20 mb-3">
+            <div className="text-center group">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-primary/20 mb-3 group-hover:bg-gradient-primary/30 transition-all duration-300">
                 <Target className="w-6 h-6 text-primary" />
               </div>
               <div className="text-2xl font-bold text-primary mb-1">25+</div>

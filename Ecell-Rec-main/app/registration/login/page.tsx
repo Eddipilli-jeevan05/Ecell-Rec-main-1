@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Eye, EyeOff, LogIn, Key, Loader2 } from "lucide-react";
 import { ECellLogo } from "@/components/ECellLogo";
 import { InfoTooltip } from "@/components/ui/info-tooltip";
+import { SimpleThemeToggle } from "@/components/ui/theme-toggle";
 import { MockDataService } from "@/lib/mockData";
 
 interface LoginForm {
@@ -94,7 +95,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen bg-background relative overflow-hidden flex items-center justify-center transition-colors duration-300">
+      {/* Theme Toggle - Fixed position */}
+      <div className="fixed top-6 right-6 z-50">
+        <SimpleThemeToggle />
+      </div>
+
       {/* Background elements */}
       <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-primary opacity-20 blur-xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-gradient-accent opacity-15 blur-xl animate-pulse delay-1000" />

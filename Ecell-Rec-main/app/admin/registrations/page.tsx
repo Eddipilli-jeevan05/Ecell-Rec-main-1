@@ -142,6 +142,16 @@ interface Submission {
 const AdminRegistrations = () => {
   const searchParams = useSearchParams();
 
+  // Set dark theme on component mount
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark');
+    return () => {
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
+    };
+  }, []);
+
   // State management
   const [registrations, setRegistrations] = useState<RegistrationWithUser[]>([]);
   // const [submissions, setSubmissions] = useState<SubmissionData[]>([]);
@@ -565,14 +575,21 @@ const AdminRegistrations = () => {
   // Login screen
   if (showLogin) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <div className="w-full max-w-md">
+      <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-4" style={{
+        backgroundColor: 'hsl(240 10% 3.9%)',
+        color: 'hsl(0 0% 98%)'
+      }}>
+        {/* Background elements */}
+        <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-primary opacity-20 blur-xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-gradient-accent opacity-15 blur-xl animate-pulse delay-1000" />
+
+        <div className="w-full max-w-md relative z-10">
           <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-2xl">
             <CardHeader className="text-center pb-4">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mb-4 shadow-lg">
+              <div className="mx-auto w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mb-4 shadow-lg">
                 <Shield className="h-8 w-8 text-primary-foreground" />
               </div>
-              <CardTitle className="text-2xl font-bold">
+              <CardTitle className="text-2xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
                 Admin Access
               </CardTitle>
               <p className="text-muted-foreground text-sm">
@@ -634,12 +651,28 @@ const AdminRegistrations = () => {
 
   // Main dashboard
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto p-4 lg:p-6">
+    <div className="min-h-screen relative overflow-hidden" style={{
+      backgroundColor: 'hsl(240 10% 3.9%)',
+      color: 'hsl(0 0% 98%)',
+      '--background': '240 10% 3.9%',
+      '--foreground': '0 0% 98%',
+      '--card': '240 10% 3.9%',
+      '--card-foreground': '0 0% 98%',
+      '--primary': '263 70% 50%',
+      '--primary-foreground': '0 0% 98%',
+      '--muted': '240 3.7% 15.9%',
+      '--muted-foreground': '240 5% 64.9%',
+      '--border': '240 3.7% 15.9%'
+    } as React.CSSProperties}>
+      {/* Background elements */}
+      <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-primary opacity-10 blur-xl animate-pulse" />
+      <div className="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-gradient-accent opacity-8 blur-xl animate-pulse delay-1000" />
+
+      <div className="container mx-auto p-4 lg:p-6 relative z-10">
         {/* Header */}
-        <div className="sticky top-0 z-50 flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4 p-4 bg-background/80 backdrop-blur-sm border-b shadow-sm rounded-lg">
+        <div className="sticky top-0 z-50 flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4 p-4 bg-background/80 backdrop-blur-sm border border-primary/20 shadow-sm rounded-lg">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg">
               {activeTab === 'registrations' ? (
                 <Users className="h-6 w-6 text-primary-foreground" />
               ) : (
@@ -647,7 +680,7 @@ const AdminRegistrations = () => {
               )}
             </div>
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold">
+              <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
                 {activeTab === 'registrations' ? 'Registrations Management' : 'Calendar Management'}
               </h1>
               <p className="text-muted-foreground text-sm">
@@ -1245,7 +1278,7 @@ const AdminRegistrations = () => {
                 <div className="flex gap-2">
                   <Button
                     onClick={openAddEventModal}
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold"
+                    className="bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 text-primary-foreground font-bold"
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Add Event
@@ -1547,7 +1580,7 @@ const AdminRegistrations = () => {
                 <div className="flex gap-2 pt-4">
                   <Button
                     onClick={handleEventSubmit}
-                    className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
+                    className="flex-1 bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 text-primary-foreground"
                   >
                     <Check className="h-4 w-4 mr-2" />
                     {editingEvent ? 'Update' : 'Create'}
@@ -1827,7 +1860,7 @@ const AdminRegistrations = () => {
               <Button variant="outline" onClick={closeModals}>
                 Cancel
               </Button>
-              <Button onClick={handleStatusUpdate} className="bg-primary hover:bg-primary/90">
+              <Button onClick={handleStatusUpdate} className="bg-gradient-primary hover:shadow-glow-primary transition-all duration-300">
                 Update Status
               </Button>
             </DialogFooter>

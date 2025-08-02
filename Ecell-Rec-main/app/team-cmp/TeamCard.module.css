@@ -1,0 +1,140 @@
+.card {
+  position: relative;
+  width: 220px;
+  height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f8fbff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease-in-out;
+  border: 1.5px solid #e0e7ff;
+}
+
+
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  /* Taller for more impact */
+  background: linear-gradient(to top,
+      rgba(37, 99, 235, 0.5),
+      transparent);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+
+
+
+
+.card:hover {
+  transform: scale(1.05);
+  border: 2px solid rgba(59, 130, 246, 0.2);
+  outline: 3px solid #3b82f6;
+  outline-offset: -1px;
+  box-shadow: 0 0 28px rgba(59, 130, 246, 0.3);
+}
+
+.infoOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+
+
+}
+
+.card:hover .infoOverlay {
+  opacity: 1;
+  transform: translateY(0);
+  /* Move to position smoothly */
+}
+
+.name {
+  font-size: 1.1rem;
+  /* Adjust for smaller overlay */
+  margin-bottom: 5px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  /* Makes text pop over any blue */
+}
+
+.socialLinks {
+  display: flex;
+  gap: 10px;
+}
+
+.socialLinks a {
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.socialLinks a:hover {
+  color: #00acee;
+  /* Twitter blue or adjust to platform color */
+}
+
+.socialLinks a img {
+  transition: transform 0.2s ease;
+}
+
+.socialLinks a:hover img {
+  transform: scale(1.15);
+}
+
+.role {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  z-index: 3;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 150px;
+    height: 230px;
+  }
+
+  .name {
+    font-size: 0.9rem;
+  }
+
+  .role {
+    font-size: 1rem;
+  }
+
+  .infoOverlay {
+    padding: 10px 12px;
+  }
+}
